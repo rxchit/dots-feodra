@@ -1,5 +1,5 @@
 # dots-feodra
-dotfiles for fedora installation
+dotfiles for **Fedora Workstation** (Gnome) installation
 
 ## install
 
