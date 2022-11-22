@@ -1,0 +1,57 @@
+# Move the directory to the second line
+right_format = """$memory_usage"""
+format = """[┌────── ](bold #a8dbef)$hostname$directory$all
+[└─ ](bold #a8dbef)$username$character"""
+
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Disable the blank line at the start of the prompt
+add_newline = false
+
+[cmd_duration]
+min_time = 500
+format = """took [$duration](bold yellow)"""
+
+[line_break]
+disabled = true
+
+[username]
+format = "[$user]($style)"
+style_user = "bold italic dimmed cyan"
+style_root = "bold italic red"
+show_always = true
+
+# Second paramcd
+[hostname]
+format = "[$hostname]($style) in "
+style = "bold dimmed green"
+trim_at = "-"
+ssh_only = false
+disabled = true
+
+
+# Third param
+[directory]
+style = "purple bold"
+truncate_to_repo = true
+truncation_length = 3
+truncation_symbol = ""
+home_symbol = "~"
+repo_root_style =  "italic bold purple"
+
+[fill]
+symbol=" "
+
+[memory_usage]
+disabled = false
+threshold = -1
+format = "[$symbol $ram]($style)"
+symbol = ""
+style = "bold #58585c"
+
+[character]
+error_symbol = " [🤡](bold red)"
+success_symbol = " [😈](bold green)"
+
+
