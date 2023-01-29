@@ -121,7 +121,21 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias hw='hwinfo --short'                                   # Hardware Info
 
-alias pkgup="sudo dnf upgrade --refresh -y && flatpak update -y"
+# alias pkgup="sudo dnf upgrade --refresh -y && flatpak update -y"
+function pkgup     
+              if sudo dnf upgrade | grep -q 'kernel'
+                  echo "kernel update found removing old rescue img"
+                  sudo rm /boot/initramfs-0-rescue*
+                  sudo rm /boot/vmlinuz-0-rescue*
+                  echo "removed rescue img"
+                  sudo dnf upgrade --refresh -y
+                  flatpak update -y
+              else
+                  echo "updating system"
+                  sudo dnf upgrade --refresh -y
+                  flatpak update -y
+              end
+          end
 
 # Alias for dnf
 alias dnfi='sudo dnf install'
